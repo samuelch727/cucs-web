@@ -7,6 +7,7 @@ interface passInData {
   handleMouseClick: any;
   initIndicator: any;
   handleMouseLeave: any;
+  color: string;
 }
 
 function NavItem({
@@ -15,6 +16,7 @@ function NavItem({
   handleMouseClick,
   handleMouseLeave,
   initIndicator,
+  color,
 }: passInData) {
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -51,6 +53,7 @@ function NavItem({
       onMouseEnter={handleOver}
       onClick={handleClick}
       onMouseLeave={() => handleMouseLeave()}
+      style={{ color }}
     >
       {content}
     </div>

@@ -3,6 +3,7 @@ import { useSpring, animated, config } from "react-spring";
 import "./nav.sass";
 import NavItem from "./navItem";
 import navData from "../data/navData.json";
+import themeData from "../data/themeData.json";
 
 function Nav() {
   const handleClick = (e: any) => {
@@ -21,12 +22,6 @@ function Nav() {
       width: (width - 20).toString() + "px",
       left: (left + 10).toString() + "px",
     });
-    // setIndicatorStyle.start({
-    //   ...indicatorStyle,
-    //   position: "absolute",
-    //   left: (left + 10).toString() + "px",
-    //   width: (width - 20).toString() + "px",
-    // });
   };
 
   const handleMouseClick = () => {
@@ -35,12 +30,6 @@ function Nav() {
       initWidth: indicatorPro.width,
       initLeft: indicatorPro.left,
     });
-    // setIndicatorStyle({
-    //   ...indicatorStyle,
-    //   position: "absolute",
-    //   width: indicatorPro.width,
-    //   left: indicatorPro.left,
-    // });
   };
 
   const handleMouseLeave = () => {
@@ -49,12 +38,6 @@ function Nav() {
       width: indicatorPro.initWidth,
       left: indicatorPro.initLeft,
     });
-    // setIndicatorStyle.start({
-    //   ...indicatorStyle,
-    //   position: "absolute",
-    //   left: indicatorPro.initLeft,
-    //   width: indicatorPro.initWidth,
-    // });
   };
 
   const initIndicatorPosition = (x: number, width: number) => {
@@ -68,12 +51,6 @@ function Nav() {
       initWidth: (width - 20).toString() + "px",
       initLeft: (left + 10).toString() + "px",
     });
-    // setIndicatorStyle({
-    //   ...indicatorStyle,
-    //   position: "absolute",
-    //   width: (width - 20).toString() + "px",
-    //   left: (left + 10).toString() + "px",
-    // });
   };
 
   const [indicatorPro, setIndicatorProp] = useState({
@@ -91,26 +68,31 @@ function Nav() {
     backgroundColor: "orange",
     bottom: "5px",
     config: { mass: 1, tension: 140, friction: 18 },
-    zIndex: "-1",
   });
 
   return (
-    <section>
+    <section
+      style={{
+        backgroundColor: themeData.homePage.background ?? "#ffffff",
+      }}
+    >
       <nav>
         <div className="navDiv">
           <div className="d-flex justify-content-between">
             <div className="d-flex flex-row">
-              <img src="./img/cs_logo.png" className="icon" />
+              <img src={navData.navIconDir} className="icon" />
               <p className="d-flex socName">
-                香港中文大學學生會
-                <br />
-                計算機科學系會
+                <div
+                  dangerouslySetInnerHTML={{ __html: navData.navTitle }}
+                  style={{ color: themeData.homePage.primary ?? "#ffffff" }}
+                />
               </p>
             </div>
             <div className="d-flex flex-row navBox" ref={navControlRef}>
               {navData.navItem.map((contaxt, index) => {
                 return (
                   <NavItem
+                    color={themeData.homePage.primary ?? "#000000"}
                     key={index}
                     content={contaxt.title}
                     handleMouseOver={handleMouseOver}

@@ -13,6 +13,10 @@
             "nav": "/"
         },
         {
+            "title" : "福利",
+            "nav": "/"
+        },
+        {
             "title" : "檔案",
             "nav": "/"
         },
@@ -21,5 +25,7 @@
             "nav": "/"
         }
     ],
-    "defaultItem" : 0
+    "defaultItem" : 0,
+    "navIconDir" : "./img/cs_logo.png",
+    "navTitle": "香港中文大學學生會<br/>計算計科學系會"
 }

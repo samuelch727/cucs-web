@@ -1,0 +1,11 @@
+{
+    "banner" : {
+        "imgdir": "./img/OCampBanner.jpg",
+        "title":"CS OCAMP 2021",
+        "subTitle":"立即報名<img src=\"./img/chevron_right_black_48dp.svg\" style=\"margin:0px; color:#EB9F5B\"/>",
+        "titleStyle": "{\"color\":\"#F2C791\",\"fontSize\":\"50px\",\"font-family\": \"'Work Sans', sans-serif\",\"margin\":\"0\"}",
+        "subTitleStyle":"{\"color\":\"#EB9F5B\",\"fontSize\":\"20px\", \"textAlign\":\"right\"}",
+        "textBoxStyle":"{\"transform\":\"translate(-50%,-50%)\",\"top\":\"50%\",\"left\":\"70%\"}",
+        "imgStyle":"{\"width\":\"100%\",\"height\":\"auto\",\"bottom\":\"0\"}"
+    }
+}
