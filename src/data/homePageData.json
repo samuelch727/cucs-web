@@ -3,9 +3,51 @@
         "imgdir": "./img/OCampBanner.jpg",
         "title":"CS OCAMP 2021",
         "subTitle":"立即報名<img src=\"./img/chevron_right_black_48dp.svg\" style=\"margin:0px; color:#EB9F5B\"/>",
-        "titleStyle": "{\"color\":\"#F2C791\",\"fontSize\":\"50px\",\"font-family\": \"'Work Sans', sans-serif\",\"margin\":\"0\"}",
-        "subTitleStyle":"{\"color\":\"#EB9F5B\",\"fontSize\":\"20px\", \"textAlign\":\"right\"}",
+        "titleStyle": "{\"color\":\"#F2C791\",\"fontSize\":\"50px\",\"font-family\": \"'Work Sans', sans-serif\",\"margin\":\"0\",\"textAlign\":\"right\"}",
+        "subTitleStyle":"{\"color\":\"#EB9F5B\",\"fontSize\":\"20px\", \"textAlign\":\"right\", \"cursor\": \"pointer\"}",
         "textBoxStyle":"{\"transform\":\"translate(-50%,-50%)\",\"top\":\"50%\",\"left\":\"70%\"}",
-        "imgStyle":"{\"width\":\"100%\",\"height\":\"auto\",\"bottom\":\"0\"}"
-    }
+        "imgStyle":"{\"width\":\"auto\",\"height\":\"100%\",\"bottom\":\"0\",\"transform\":\"translate(-50%,0%)\",\"left\":\"50%\"}"
+    },
+    "gridData" : [
+        {
+            "span" : 6,
+            "title" : "計算機科學迎新營<br/>輔員報名詳情及表格",
+            "subTitle" : "活動",
+            "subTitleAlignment" : "left",
+            "titleAlignment":"left",
+            "backgroundColor" : "#2F5333",
+            "titleColor" : "#F6F5F7",
+            "subTitleColor" : "#CAF0C8",
+            "height":"400px",
+            "subTitleFontSize":"20px",
+            "titleFontSize":"40px"
+        }, 
+        {
+            "span" : 6,
+            "title" : "test title",
+            "subTitle" : "subtitle",
+            "subTitleAlignment" : "left",
+            "titleAlignment":"left",
+            "backgroundColor" : "#325697",
+            "titleColor" : "#F6F5F7",
+            "subTitleColor" : "#BEDBEA",
+            "height":"400px",
+            "subTitleFontSize":"20px",
+            "titleFontSize":"40px"
+        },
+        {
+            "span" : 12,
+            "title" : "test title",
+            "subTitle" : "subtitle",
+            "subTitleAlignment" : "center",
+            "titleAlignment":"center",
+            "backgroundColor" : "#8E3823",
+            "titleColor" : "#F6F5F7",
+            "subTitleColor" : "#F2C791",
+            "height":"300px",
+            "subTitleFontSize":"20px",
+            "titleFontSize":"40px"
+        }
+    ],
+    "backgroundColor": "#261A1A"
 }

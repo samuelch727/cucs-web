@@ -1,5 +1,4 @@
 import React, { useRef, createContext, useState, useEffect } from "react";
-import "./App.css";
 import Nav from "./components/nav";
 import HomePage from "./components/pages/HomePage";
 
