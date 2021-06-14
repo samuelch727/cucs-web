@@ -1,4 +1,5 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
+import { useLocation } from "react-router";
 import { useSpring, animated } from "react-spring";
 import { MediaData } from "../App";
 import "./nav.sass";
@@ -6,11 +7,17 @@ import NavItem from "./navItem";
 import navData from "../data/navData.json";
 import themeData from "../data/themeData.json";
 import { ReactComponent as MenuIcon } from "../menu.svg";
+import { ReactComponent as CloseIcon } from "../close.svg";
 
-function Nav() {
+interface passInData {
+  setNoScroll: Function;
+}
+
+function Nav({ setNoScroll }: passInData) {
+  console.log(useLocation().pathname);
   //@ts-ignore
   const { isMobile } = useContext(MediaData); //ignore due to ts limitation
-  return isMobile ? <NavMobile /> : <NavDesktop />;
+  return isMobile ? <NavMobile setNoScroll={setNoScroll} /> : <NavDesktop />;
 }
 
 function NavDesktop() {
@@ -74,6 +81,8 @@ function NavDesktop() {
     config: { mass: 1, tension: 140, friction: 18 },
   });
 
+  const location = useLocation().pathname;
+
   return (
     <section
       style={{
@@ -87,7 +96,7 @@ function NavDesktop() {
               <img src={navData.navIconDir} className="icon" />
               <div
                 dangerouslySetInnerHTML={{ __html: navData.navTitle }}
-                style={{ color: themeData.homePage.primary ?? "#ffffff" }}
+                style={{ color: themeData.homePage.primary ?? "#000000" }}
                 className="d-flex socName"
               />
             </div>
@@ -101,7 +110,7 @@ function NavDesktop() {
                     handleMouseOver={handleMouseOver}
                     handleMouseClick={handleMouseClick}
                     initIndicator={
-                      index === navData.defaultItem
+                      location === contaxt.nav
                         ? initIndicatorPosition
                         : () => {}
                     }
@@ -122,15 +131,72 @@ function NavDesktop() {
   );
 }
 
-function NavMobile() {
+function NavMobile({ setNoScroll }: passInData) {
+  const [showMenu, setShowMenu] = useState(false);
+  const [navHeight, setNavHeight] = useState("0px");
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    setNoScroll();
+    setShowMenu(!showMenu);
+    console.log("pressed");
+  };
+
+  useEffect(() => {
+    if (navRef && navRef?.current) {
+      setNavHeight(
+        navRef.current.getBoundingClientRect().height.toString() + "px"
+      );
+      console.log(navRef.current.getBoundingClientRect().height.toString());
+    }
+  }, [navRef]);
+
   return (
     <section
       style={{
         backgroundColor: themeData.homePage.background ?? "#ffffff",
+        position: "relative",
       }}
     >
+      {showMenu ? (
+        <div
+          style={{
+            width: window.innerWidth + "px",
+            height: window.innerHeight + "px",
+            backgroundColor: themeData.homePage.background ?? "#ffffff",
+            position: "absolute",
+            zIndex: 2,
+          }}
+        >
+          <div
+            style={{
+              top: "0",
+              right: "0",
+              position: "absolute",
+              height: navHeight,
+              // height: "100%",
+              // height: "50px",
+              display: "grid",
+              placeItems: "center",
+              marginRight: "10px",
+            }}
+            onClick={() => handleClick()}
+          >
+            <div style={{ display: "table-cell", verticalAlign: "middle" }}>
+              <CloseIcon
+                style={{
+                  height: "30px",
+                  width: "30px",
+                  fill: themeData.homePage.primary ?? "#000000",
+                  display: "block",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
       <nav>
-        <div className="navDiv">
+        <div className="navDiv" ref={navRef}>
           <div className="d-flex justify-content-between">
             <div className="d-flex flex-row" style={{ marginLeft: "10px" }}>
               <img src={navData.navIconDir} className="icon" />
@@ -140,10 +206,20 @@ function NavMobile() {
                 className="d-flex socName"
               />
             </div>
-            <div className="menuIcon">
+            <div className="menuIcon" style={{ position: "relative" }}>
+              <div
+                style={{ height: "100%", width: "100%", position: "absolute" }}
+                onClick={() => handleClick()}
+              />
               <MenuIcon
                 fill={themeData.homePage.primary}
-                style={{ marginRight: "10px", display: "block" }}
+                style={{
+                  marginRight: "10px",
+                  display: "block",
+                  height: "30px",
+                  width: "30px",
+                }}
+                onClick={() => handleClick}
               />
             </div>
           </div>

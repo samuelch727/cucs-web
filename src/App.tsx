@@ -13,9 +13,13 @@ function App() {
   const navRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setcontentHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(true);
+  const [mobileShowMenu, setMobileShowMenu] = useState(false);
   useEffect(() => {
     function updateSize() {
       setIsMobile(window.outerWidth < 798 ? true : false);
+      if (window.outerWidth >= 798) {
+        setMobileShowMenu(false);
+      }
       if (navRef && navRef.current) {
         setcontentHeight(
           window.innerHeight - navRef.current.getBoundingClientRect().height
@@ -29,11 +33,25 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div
+      style={
+        mobileShowMenu
+          ? {
+              overflow: "hidden",
+              height: window.innerHeight,
+              width: window.innerWidth,
+            }
+          : {}
+      }
+    >
       <Router>
         <MediaData.Provider value={{ contentHeight, isMobile }}>
           <div ref={navRef}>
-            <Nav />
+            <Nav
+              setNoScroll={() => {
+                setMobileShowMenu(!mobileShowMenu);
+              }}
+            />
           </div>
           <Switch>
             <Route exact path="/">
