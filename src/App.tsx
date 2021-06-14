@@ -30,7 +30,7 @@ function App() {
     if (!contentHeight) updateSize();
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  }, [contentHeight]);
 
   return (
     <div

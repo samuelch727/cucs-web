@@ -14,7 +14,6 @@ interface passInData {
 }
 
 function Nav({ setNoScroll }: passInData) {
-  console.log(useLocation().pathname);
   //@ts-ignore
   const { isMobile } = useContext(MediaData); //ignore due to ts limitation
   return isMobile ? <NavMobile setNoScroll={setNoScroll} /> : <NavDesktop />;
@@ -139,7 +138,6 @@ function NavMobile({ setNoScroll }: passInData) {
   const handleClick = () => {
     setNoScroll();
     setShowMenu(!showMenu);
-    console.log("pressed");
   };
 
   useEffect(() => {
@@ -147,7 +145,6 @@ function NavMobile({ setNoScroll }: passInData) {
       setNavHeight(
         navRef.current.getBoundingClientRect().height.toString() + "px"
       );
-      console.log(navRef.current.getBoundingClientRect().height.toString());
     }
   }, [navRef]);
 
@@ -191,6 +188,37 @@ function NavMobile({ setNoScroll }: passInData) {
                   display: "block",
                 }}
               />
+            </div>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              placeItems: "center",
+              height: "100vh",
+              width: "100vw",
+            }}
+          >
+            <div
+              style={{
+                maxHeight: "90vh",
+                display: "flex",
+                flexFlow: "column wrap",
+              }}
+            >
+              {navData.navItem.map((context, key) => {
+                return (
+                  <div
+                    style={{
+                      color: themeData.homePage.primary,
+                      fontSize: "30px",
+                      textAlign: "center",
+                      margin: "5px",
+                    }}
+                  >
+                    {context.title}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
