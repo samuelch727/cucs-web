@@ -30,6 +30,7 @@ function Banner() {
         backgroundColor: "#261A1A",
         position: "relative",
         overflow: "hidden",
+        marginTop: window.innerHeight - contentHeight + "px",
       }}
     >
       <img src="./img/OCampBanner.jpg" style={imgStyle} className="bannerImg" />

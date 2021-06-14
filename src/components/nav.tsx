@@ -86,6 +86,10 @@ function NavDesktop() {
     <section
       style={{
         backgroundColor: themeData.homePage.background ?? "#ffffff",
+        position: "fixed",
+        top: "0",
+        width: "100%",
+        zIndex: 3,
       }}
     >
       <nav>
@@ -152,7 +156,10 @@ function NavMobile({ setNoScroll }: passInData) {
     <section
       style={{
         backgroundColor: themeData.homePage.background ?? "#ffffff",
-        position: "relative",
+        position: "fixed",
+        top: "0",
+        width: "100%",
+        zIndex: 3,
       }}
     >
       {showMenu ? (
@@ -208,6 +215,7 @@ function NavMobile({ setNoScroll }: passInData) {
               {navData.navItem.map((context, key) => {
                 return (
                   <div
+                    key={key}
                     style={{
                       color: themeData.homePage.primary,
                       fontSize: "30px",
