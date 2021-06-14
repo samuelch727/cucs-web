@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { useLocation } from "react-router";
 import { useSpring, animated } from "react-spring";
 import { MediaData } from "../App";
+import { Link } from "react-router-dom";
 import "./nav.sass";
 import NavItem from "./navItem";
 import navData from "../data/navData.json";
@@ -138,6 +139,7 @@ function NavMobile({ setNoScroll }: passInData) {
   const [showMenu, setShowMenu] = useState(false);
   const [navHeight, setNavHeight] = useState("0px");
   const navRef = useRef<HTMLDivElement>(null);
+  const location = useLocation().pathname;
 
   const handleClick = () => {
     setNoScroll();
@@ -217,13 +219,48 @@ function NavMobile({ setNoScroll }: passInData) {
                   <div
                     key={key}
                     style={{
-                      color: themeData.homePage.primary,
                       fontSize: "30px",
                       textAlign: "center",
                       margin: "5px",
+                      justifyContent: "center",
                     }}
                   >
-                    {context.title}
+                    <div
+                      style={{
+                        display: "flex",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Link
+                        to={context.nav}
+                        style={{ textDecoration: "none" }}
+                        onClick={() => {
+                          setTimeout(() => {
+                            handleClick();
+                          }, 250);
+                        }}
+                      >
+                        <p
+                          style={
+                            location == context.nav
+                              ? {
+                                  borderBottom:
+                                    "4px solid " +
+                                    themeData.homePage.primaryVariant,
+                                  color: themeData.homePage.primary,
+                                }
+                              : {
+                                  borderBottom: "4px solid transparent",
+                                  color: themeData.homePage.primary,
+                                }
+                          }
+                        >
+                          {context.title}
+                        </p>
+                      </Link>
+                    </div>
                   </div>
                 );
               })}
