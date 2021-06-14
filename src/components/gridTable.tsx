@@ -1,24 +1,31 @@
 import { relative } from "path";
 import React, { useContext } from "react";
 import { HomePageData } from "./pages/HomePage";
+import { MediaData } from "../App";
 
 function GridTable() {
   const data = useContext(HomePageData);
+  const { isMobile } = useContext(MediaData);
 
   return (
-    <div style={{ backgroundColor: data.backgroundColor }}>
+    <div
+      style={{
+        backgroundColor: data.color.background,
+        margin: "auto",
+      }}
+    >
       <div
         className="row"
         style={{
           padding: "5px",
-          backgroundColor: data.backgroundColor,
+          backgroundColor: data.color.background,
           margin: "0",
         }}
       >
         {data.gridData.map((context, key) => {
           return (
             <div
-              className={"col-" + context.span}
+              className={isMobile ? "col-12" : "col-" + context.span}
               style={{ padding: "5px" }}
               key={key}
             >

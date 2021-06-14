@@ -3,7 +3,7 @@
         "imgdir": "./img/OCampBanner.jpg",
         "title":"CS OCAMP 2021",
         "subTitle":"立即報名<img src=\"./img/chevron_right_black_48dp.svg\" style=\"margin:0px; color:#EB9F5B\"/>",
-        "titleStyle": "{\"color\":\"#F2C791\",\"fontSize\":\"50px\",\"font-family\": \"'Work Sans', sans-serif\",\"margin\":\"0\",\"textAlign\":\"right\"}",
+        "titleStyle": "{\"color\":\"#F2C791\",\"fontSize\":\"50px\",\"fontFamily\": \"'Work Sans', sans-serif\",\"margin\":\"0\",\"textAlign\":\"right\"}",
         "subTitleStyle":"{\"color\":\"#EB9F5B\",\"fontSize\":\"20px\", \"textAlign\":\"right\", \"cursor\": \"pointer\"}",
         "textBoxStyle":"{\"transform\":\"translate(-50%,-50%)\",\"top\":\"50%\",\"left\":\"70%\"}",
         "imgStyle":"{\"width\":\"auto\",\"height\":\"100%\",\"bottom\":\"0\",\"transform\":\"translate(-50%,0%)\",\"left\":\"50%\"}"
@@ -24,8 +24,8 @@
         }, 
         {
             "span" : 6,
-            "title" : "test title",
-            "subTitle" : "subtitle",
+            "subTitle" : "系會公告",
+            "title" : "第五次幹事會常務會議議程通告",
             "subTitleAlignment" : "left",
             "titleAlignment":"left",
             "backgroundColor" : "#325697",
@@ -37,8 +37,8 @@
         },
         {
             "span" : 12,
-            "title" : "test title",
-            "subTitle" : "subtitle",
+            "title" : "會室重新開放",
+            "subTitle" : "福利",
             "subTitleAlignment" : "center",
             "titleAlignment":"center",
             "backgroundColor" : "#8E3823",
@@ -49,5 +49,10 @@
             "titleFontSize":"40px"
         }
     ],
-    "backgroundColor": "#261A1A"
+    "color":{
+        "primary":"#F2C791",
+        "primaryVariant":"#EB9F5B",
+        "background":"#261A1A",
+        "backgroundVariant":"#A62103"
+    }
 }

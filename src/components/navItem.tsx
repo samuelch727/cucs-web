@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./navItem.sass";
 
 interface passInData {
@@ -8,6 +9,7 @@ interface passInData {
   initIndicator: any;
   handleMouseLeave: any;
   color: string;
+  link: string;
 }
 
 function NavItem({
@@ -17,6 +19,7 @@ function NavItem({
   handleMouseLeave,
   initIndicator,
   color,
+  link,
 }: passInData) {
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -47,15 +50,16 @@ function NavItem({
   }, [divRef]);
 
   return (
-    <div
-      className="navItem"
-      ref={divRef}
-      onMouseEnter={handleOver}
-      onClick={handleClick}
-      onMouseLeave={() => handleMouseLeave()}
-      style={{ color }}
-    >
-      {content}
+    <div ref={divRef} className="navItem">
+      <Link
+        onMouseEnter={handleOver}
+        onClick={handleClick}
+        onMouseLeave={() => handleMouseLeave()}
+        style={{ color, textDecoration: "none", padding: "10px" }}
+        to={link}
+      >
+        {content}
+      </Link>
     </div>
   );
 }

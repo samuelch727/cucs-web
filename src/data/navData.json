@@ -6,23 +6,23 @@
         },
         {
             "title" : "介紹",
-            "nav": "/"
+            "nav": "/intro"
         },
         {
             "title" : "活動",
-            "nav": "/"
+            "nav": "/activity"
         },
         {
             "title" : "福利",
-            "nav": "/"
+            "nav": "/weal"
         },
         {
             "title" : "檔案",
-            "nav": "/"
+            "nav": "/file"
         },
         {
             "title" : "聯絡我們",
-            "nav": "/"
+            "nav": "/contact"
         }
     ],
     "defaultItem" : 0,

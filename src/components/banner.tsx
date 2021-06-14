@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { ContentHeight } from "../App";
+import { MediaData } from "../App";
 import "./banner.sass";
 import data from "../data/homePageData.json";
 
 function Banner() {
-  const height = useContext(ContentHeight);
+  //@ts-ignore
+  const { contentHeight, isMobile } = useContext(MediaData);
   var titleStyle = {};
   var subTitleStyle = {};
   var textBoxStyle = {};
@@ -25,7 +26,7 @@ function Banner() {
   return (
     <div
       style={{
-        height,
+        height: contentHeight,
         backgroundColor: "#261A1A",
         position: "relative",
         overflow: "hidden",

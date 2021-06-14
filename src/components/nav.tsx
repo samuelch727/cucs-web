@@ -1,15 +1,19 @@
-import React, { useState, useRef } from "react";
-import { useSpring, animated, config } from "react-spring";
+import React, { useState, useRef, useContext } from "react";
+import { useSpring, animated } from "react-spring";
+import { MediaData } from "../App";
 import "./nav.sass";
 import NavItem from "./navItem";
 import navData from "../data/navData.json";
 import themeData from "../data/themeData.json";
+import { ReactComponent as MenuIcon } from "../menu.svg";
 
 function Nav() {
-  const handleClick = (e: any) => {
-    console.log(e);
-  };
+  //@ts-ignore
+  const { isMobile } = useContext(MediaData); //ignore due to ts limitation
+  return isMobile ? <NavMobile /> : <NavDesktop />;
+}
 
+function NavDesktop() {
   const navControlRef = useRef<HTMLDivElement>(null);
 
   const handleMouseOver = (x: number, width: number) => {
@@ -66,7 +70,7 @@ function Nav() {
     width: indicatorPro.width,
     height: "4px",
     backgroundColor: "orange",
-    bottom: "5px",
+    bottom: "-5px",
     config: { mass: 1, tension: 140, friction: 18 },
   });
 
@@ -81,12 +85,11 @@ function Nav() {
           <div className="d-flex justify-content-between">
             <div className="d-flex flex-row">
               <img src={navData.navIconDir} className="icon" />
-              <p className="d-flex socName">
-                <div
-                  dangerouslySetInnerHTML={{ __html: navData.navTitle }}
-                  style={{ color: themeData.homePage.primary ?? "#ffffff" }}
-                />
-              </p>
+              <div
+                dangerouslySetInnerHTML={{ __html: navData.navTitle }}
+                style={{ color: themeData.homePage.primary ?? "#ffffff" }}
+                className="d-flex socName"
+              />
             </div>
             <div className="d-flex flex-row navBox" ref={navControlRef}>
               {navData.navItem.map((contaxt, index) => {
@@ -103,12 +106,44 @@ function Nav() {
                         : () => {}
                     }
                     handleMouseLeave={handleMouseLeave}
+                    link={contaxt.nav}
                   />
                 );
               })}
               <animated.div
                 //@ts-ignore
                 style={indicatorStyle}
+              />
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+  );
+}
+
+function NavMobile() {
+  return (
+    <section
+      style={{
+        backgroundColor: themeData.homePage.background ?? "#ffffff",
+      }}
+    >
+      <nav>
+        <div className="navDiv">
+          <div className="d-flex justify-content-between">
+            <div className="d-flex flex-row" style={{ marginLeft: "10px" }}>
+              <img src={navData.navIconDir} className="icon" />
+              <div
+                dangerouslySetInnerHTML={{ __html: navData.navTitle }}
+                style={{ color: themeData.homePage.primary ?? "#ffffff" }}
+                className="d-flex socName"
+              />
+            </div>
+            <div className="menuIcon">
+              <MenuIcon
+                fill={themeData.homePage.primary}
+                style={{ marginRight: "10px", display: "block" }}
               />
             </div>
           </div>
